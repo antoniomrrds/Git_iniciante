@@ -1,0 +1,55 @@
+git bash
+
+comando para configurar o usuario = git config  --global user.name "Antonio marcos"  
+comando para configurar o email = git config  --global user.email "arqueiroverd@gmail.com"
+
+para renomear arquivos pelo cmd 
+ren (atual e novo) ex ren antec antes
+
+pwd => te tras o caminho atual do prompt de comando onde esta navegando
+
+CTRL + l => limpa o terminal 
+tree => este comando te mostra o ramo 
+ls => e o mesmo que o dir 
+cat e nome do arquivo => mostra o arquivo
+ls-a => serve  para mostrar o aqruivo oculto 
+ls -l => trás mais informaçoes sobre do arquivo
+
+Para alterar o branch master para o main
+
+git branch -m master main => este e comando 
+
+
+
+Para enviar para github
+
+git remote add origin => e o endereço do repositorio local
+git push  origin master => para jogar para outro 
+git pull => puxa os arquivos para a o seu git local
+
+
+para clonar um repositorio o git clone e endereco lembrese de navegar ate a pasta que deseja clonar:
+git clone https://github.com/cod3rcursos/curso-regex.git
+
+mv nome do arquivo de origem novo nome => serve para renomear o arquivo
+rm -rf (seguido do diretorio) || git rm (nome do arquivo ) => serve para excluir
+git rm  --cached (nome do arquivo). => serve para o git não o monitorar
+git log --diff-filter=D --summary => para achar o hash do arquivo deletado
+git  checkout  (o hash voce encontra com o caminho acima(e805a79d4358252ac58fcf2c8d69c0a7bfc8e20f~1)s) a.js
+git revert (hash) => reverter o commit
+git revert head => aponta para o ultimo 
+git init . => para voce apontar o  repositorio como uma pasta de trabalho 
+git status =>  Serve  para saber sobre o status sobre os arquivos da pasta
+git add (nome do arquivo) => desta forma o arquivo foi adicionado ao git 
+git add * => este comando ja adiciona todos arquivos na pasta
+git commit -m "o nome do que voce fez na aquele arquivo" => grava as alteraçoes no repositorio
+git diff || git diff(nome do arquivo) => as modificações aparecem se não foram adicionadas ao git add ou comitadas
+git diff --staged =>   arquivos que não foram comitadas ainda ou seja so adiciondas git add
+git log => serve para te mostrar o status daquele repositorio 
+git log --oneline => log bem resumido
+git show => te mostra as alterações deste arquivo
+git help || git help -a || git help -g => para te ajudar
+
+
+
+touch (e o nome do arquivo) ex: a.js => serve para criar o arquivo pelo bash ou pelo prompt
