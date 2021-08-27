@@ -19,6 +19,14 @@ Para alterar o branch master para o main
 
 git branch -m master main => este e comando 
 
+Caso apareca este erro siga os passos abaixo 
+error = Everything up-to-date
+
+Solução abaixo
+git reset --hard [sua branch]
+git add .
+git commit -m "...blablabla"
+git push origin [sua branch]
 
 
 Para enviar para github
