@@ -1,6 +1,6 @@
 git bash
 
-comando para configurar o usuario = git config  --global user.name "Antonio marcos"  
+comando para configurar o usuario = git config  --global user.name "antoniomrrds"  
 comando para configurar o email = git config  --global user.email "arqueiroverd@gmail.com"
 
 para renomear arquivos pelo cmd 
