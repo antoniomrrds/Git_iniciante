@@ -15,6 +15,12 @@ cat e nome do arquivo => mostra o arquivo
 ls-a => serve  para mostrar o aqruivo oculto 
 ls -l => trás mais informaçoes sobre do arquivo
 
+para criar um branch 
+
+git branch (nome do branch)  
+
+entrar dentro do branch => git checkout
+
 Para alterar o branch master para o main
 
 git branch -m master main => este e comando 
