@@ -67,3 +67,20 @@ git help || git help -a || git help -g => para te ajudar
 
 
 touch (e o nome do arquivo) ex: a.js => serve para criar o arquivo pelo bash ou pelo prompt
+
+
+CASO APAREÇA O ERRO :
+
+! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/antoniomrrds/Curso-de-Node-js.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
+EXECUTE ESTE PASSOS 
+1 - GIT PULL
+2 -  git branch --set-upstream-to=origin/<sua branch geralmente e main > main = ai fica assim =>  git branch --set-upstream-to=origin/main main
+3 -  git pull --allow-unrelated-histories
+4 - git push
