@@ -61,6 +61,7 @@ git diff || git diff(nome do arquivo) => as modificações aparecem se não fora
 git diff --staged =>   arquivos que não foram comitadas ainda ou seja so adiciondas git add
 git log => serve para te mostrar o status daquele repositorio 
 git log --oneline => log bem resumido
+
 git show => te mostra as alterações deste arquivo
 git help || git help -a || git help -g => para te ajudar
 
@@ -84,3 +85,7 @@ EXECUTE ESTE PASSOS
 2 -  git branch --set-upstream-to=origin/<sua branch geralmente e main > main = ai fica assim =>  git branch --set-upstream-to=origin/main main
 3 -  git pull --allow-unrelated-histories
 4 - git push
+
+adiconado arquivo dentro do gitignore
+
+eccho (nome do arquivo) >> .gitignore = o comando significa adicione  o arquivo dentro do gitignore
