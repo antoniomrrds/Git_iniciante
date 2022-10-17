@@ -38,7 +38,7 @@ git push origin [sua branch]
 Para enviar para github
 
 git remote add origin => e o endereço do repositorio local
-git push  origin master => para jogar para outro 
+git push  origin main -u => para jogar para outro 
 git pull => puxa os arquivos para a o seu git local
 
 
