@@ -1,7 +1,7 @@
 git bash
 
-comando para configurar o usuario = git config  --global user.name "antoniomrrds"  
-comando para configurar o email = git config  --global user.email "arqueiroverd@gmail.com"
+comando para configurar o usuario = git config  --global user.name "your name"  
+comando para configurar o email = git config  --global user.email "your email"
 
 para renomear arquivos pelo cmd 
 ren (atual e novo) ex ren antec antes
