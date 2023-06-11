@@ -132,9 +132,8 @@ add o visual code para abrir no lugar do vim
 # conventional commits
 npm i git-commit-msg-linter -D
 
-#personalizado config git --global 
+#personalizado config git --global --edit
 [alias]
 s = !git status -s
-c = !git add --all . && !git commit -m
-l = !git log --pretty=format: '%C(blue)%h %C(red)%d %C(white)%s %C(cyan) %cn, %C(green)%cr
-
+c = !git add --all && !git commit -m
+l = !git log --pretty=format:'%C(auto)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
