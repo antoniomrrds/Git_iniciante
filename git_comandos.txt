@@ -63,6 +63,17 @@ git diff || git diff(nome do arquivo) => as modificações aparecem se não fora
 git diff --staged =>   arquivos que não foram comitadas ainda ou seja so adiciondas git add
 git log => serve para te mostrar o status daquele repositorio 
 git log --oneline => log bem resumido
+git log personalizado = 
+
+e tipo um esconderijo da pra voce salvar sem commitar ou seja quando seu codigo esta incompleto 
+git stash => {
+  git add . 
+  git stash => vai voltar ao commit anterior
+  git stash list => lista os codigo salvado na stash
+  git stash apply => volta o codigo que voce escodeu no stash mas fica no stash ainda
+  git stash pop => volta o codigo que voce escodeu no stash neste caso apaga da lista stash (este e o mais correto para nao fica salvar lixo)
+  
+}
 
 git show => te mostra as alterações deste arquivo
 git help || git help -a || git help -g => para te ajudar
@@ -117,3 +128,13 @@ Do Usuário => git config --global --edit
 abri as config do projeto => git config --edit 
 add o visual code para abrir no lugar do vim 
 (Do sistema global | Do Usuário)  core.editor code
+
+# conventional commits
+npm i git-commit-msg-linter -D
+
+#personalizado config git --global 
+[alias]
+s = !git status -s
+c = !git add --all . && !git commit -m
+l = !git log --pretty=format: '%C(blue)%h %C(red)%d %C(white)%s %C(cyan) %cn, %C(green)%cr
+
