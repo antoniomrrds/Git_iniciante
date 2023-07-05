@@ -34,6 +34,9 @@ git add .
 git commit -m "...blablabla"
 git push origin [sua branch]
 
+Como saber os commits que ainda nao foram para o repositorio remoto = _=> {
+    git log --branches --not --remotes
+}
 
 Para enviar para github
 
