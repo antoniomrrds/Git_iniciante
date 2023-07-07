@@ -123,8 +123,7 @@ git push origin master
 # CHAVES SSH
 ssh-keygen -t rsa -C "your email"
 cat ~/.ssh/id_rsa.pub
-
-ssh-keygen -f -/.ssh/nome_chave_rsa -t rsa -b 4096
+ssh-keygen -t rsa -b 4096 -C "emailgit@gmail.com" -f ~/.ssh/nome_chave_rsa
 cat ~/.ssh/nome_chave_rsa.pub
 
 # CONFIG GIT  
