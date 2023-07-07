@@ -129,6 +129,7 @@ cat ~/.ssh/nome_chave_rsa.pub
 
 # CONFIG GIT  
 Do sistema global => git config --system --edit
+listar as config  => git config --list
 Do Usuário => git config --global --edit
 abri as config do projeto => git config --edit 
 add o visual code para abrir no lugar do vim 
