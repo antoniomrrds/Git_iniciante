@@ -33,7 +33,7 @@
   "editor.suggest.localityBonus": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.formatOnPaste": false,
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.mouseWheelScrollSensitivity": 2,
   "editor.smoothScrolling": true,
   "editor.mouseWheelZoom": true,
@@ -127,7 +127,8 @@
     "*.html": "html",
     "**/templates/*.html": "django-html",
     "**/templates/*": "django-txt",
-    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "*.ts": "typescript"
   },
 
   // Emmet
@@ -202,5 +203,28 @@
       "path": "~/Development/custom-cspell-dictionary.txt",
       "addWords": false
     }
-  ]
+  ],
+  "tabnine.experimentalAutoImports": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ]
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSave": "afterDelay",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.useWorkspaceDependenciesAutoImport": true,
+
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
