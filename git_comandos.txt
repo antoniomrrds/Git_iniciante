@@ -141,6 +141,6 @@ npm i git-commit-msg-linter -D
 [alias]
 s = !git status -s
 c = !git add --all && !git commit -m
-l = !git log --pretty=format:'%C(auto)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+l = !git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)[%cn], %C(green)%cr'
 ls = !git log --branches --not --remotes
 amend = !git add . && git commit --amend --no-edit
