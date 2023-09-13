@@ -51,6 +51,7 @@ git clone https://github.com/cod3rcursos/curso-regex.git
 mv nome do arquivo de origem novo nome => serve para renomear o arquivo
 rm -rf (seguido do diretorio) || git rm (nome do arquivo ) => serve para excluir
 git rm  --cached (nome do arquivo). => serve para o git não o monitorar
+git commit --amend -m 'feat: adiciona mapa de exemplo' => serve para renomear o commit mas funciona so para o ultimos mas duvidas https://codamos.com.br/git-renomear-mensagens-commit-repositorio/
 git log --diff-filter=D --summary => para achar o hash do arquivo deletado
 git  checkout  (o hash voce encontra com o caminho acima(e805a79d4358252ac58fcf2c8d69c0a7bfc8e20f~1)s) a.js
 git revert (hash) => reverter o commit
@@ -135,7 +136,7 @@ add o visual code para abrir no lugar do vim
 (Do sistema global | Do Usuário)  core.editor code
 
 # conventional commits
-npm i git-commit-msg-linter -D
+npm i git-commit-msg-linter -D        
 
 #personalizado config git --global --edit
 [alias]
