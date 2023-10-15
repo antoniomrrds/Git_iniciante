@@ -139,6 +139,8 @@ add o visual code para abrir no lugar do vim
 npm i git-commit-msg-linter -D        
 
 #personalizado config git --global --edit
+[core]
+	editor = code
 [push]
   followTags = true
 [alias]
