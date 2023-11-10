@@ -48,6 +48,13 @@ git pull => puxa os arquivos para a o seu git local
 para clonar um repositorio o git clone e endereco lembrese de navegar ate a pasta que deseja clonar:
 git clone https://github.com/cod3rcursos/curso-regex.git
 
+==== git branch =================
+
+Uma maneira mais concisa de criar uma nova branch e mudar para ela ao mesmo tempo é usando o comando -b => git checkout -b minha_feature | git switch -c minha_feature
+Se você quiser obter informações adicionais, como os últimos commits em cada branch, você pode  usar => git branch -av
+Para obter mais informações sobre uma branch específica, você pode usar o seguinte comando => git show nome_da_branch
+
+
 mv nome do arquivo de origem novo nome => serve para renomear o arquivo
 rm -rf (seguido do diretorio) || git rm (nome do arquivo ) => serve para excluir
 git rm  --cached (nome do arquivo). => serve para o git não o monitorar
