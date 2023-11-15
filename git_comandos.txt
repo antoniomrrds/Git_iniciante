@@ -53,7 +53,24 @@ git clone https://github.com/cod3rcursos/curso-regex.git
 Uma maneira mais concisa de criar uma nova branch e mudar para ela ao mesmo tempo é usando o comando -b => git checkout -b minha_feature | git switch -c minha_feature
 Se você quiser obter informações adicionais, como os últimos commits em cada branch, você pode  usar => git branch -av
 Para obter mais informações sobre uma branch específica, você pode usar o seguinte comando => git show nome_da_branch
+=====git stash=========
+git stash = O Git tem uma área chamada stash (algo como 'esconderijo', em português), onde você pode armazenar temporariamente um instantâneo de suas alterações sem fazer o commit delas para o repositório. 
 
+1. Aplicar as alterações de volta ao branch:
+git stash apply => Isso aplicará as alterações do stash ao seu branch, mas não removerá o stash. 
+git stash drop =>  Se você quiser remover o stash após aplicar as alterações .
+git stash pop => Se você quiser aplicar e remover o stash em um único comando.
+
+2. Excluir as alterações do stash sem aplicá-las:
+
+git stash drop => Isso removerá as alterações do stash sem aplicá-las ao seu branch.
+git stash drop stash@{n} => Se você tiver vários stashes e quiser remover um stash específico 
+Onde n é o índice do stash que você deseja remover.
+
+
+git clean -df = O comando git clean -df é usado para remover arquivos não rastreados e diretórios no seu repositório Git. Aqui está o significado dos parâmetros utilizados:
+-d: Remove diretórios não rastreados.
+-f: Força a operação, removendo os arquivos sem pedir confirmação.
 
 mv nome do arquivo de origem novo nome => serve para renomear o arquivo
 rm -rf (seguido do diretorio) || git rm (nome do arquivo ) => serve para excluir
