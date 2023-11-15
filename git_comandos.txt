@@ -1,3 +1,11 @@
+===========reveter o ultimo commit do github(servidor)==================
+
+git push origin HEAD^:branch-name --force =>
+Este comando força a branch no repositório remoto a apontar para o commit anterior ao HEAD (o commit atual). Isso efetivamente remove o último commit do histórico remoto. 
+
+
+
+
 git bash
 
 comando para configurar o usuario = git config  --global user.name "your name"  
