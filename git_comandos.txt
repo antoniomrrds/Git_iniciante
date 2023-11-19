@@ -3,6 +3,15 @@
 git push origin HEAD^:branch-name --force =>
 Este comando força a branch no repositório remoto a apontar para o commit anterior ao HEAD (o commit atual). Isso efetivamente remove o último commit do histórico remoto. 
 
+=======desfazer o ultimo commit ======
+
+Desfazer o último commit localmente (ainda não enviado ao servidor): git reset --soft HEAD~1 
+Desfazer o último commit localmente, descartando mudanças: git reset --hard HEAD~1
+Desfazer o último commit já enviado ao servidor: git revert HEAD
+Alterar o último commit (após corrigir arquivos):
+git add .
+git commit --amend
+
 
 
 
@@ -61,6 +70,9 @@ git clone https://github.com/cod3rcursos/curso-regex.git
 Uma maneira mais concisa de criar uma nova branch e mudar para ela ao mesmo tempo é usando o comando -b => git checkout -b minha_feature | git switch -c minha_feature
 Se você quiser obter informações adicionais, como os últimos commits em cada branch, você pode  usar => git branch -av
 Para obter mais informações sobre uma branch específica, você pode usar o seguinte comando => git show nome_da_branch
+deletar branch local = git branch -D refactor/tests  
+deletar branch remota  = git push origin --delete refactor/tests
+
 =====git stash=========
 git stash = O Git tem uma área chamada stash (algo como 'esconderijo', em português), onde você pode armazenar temporariamente um instantâneo de suas alterações sem fazer o commit delas para o repositório. 
 
