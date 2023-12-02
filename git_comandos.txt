@@ -192,4 +192,5 @@ s = !git status -s
 c = !git add --all && !git commit -m
 l = !git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)[%cn], %C(green)%cr'
 ls = !git log --branches --not --remotes
+t = !sh -c 'git tag -a $1 -m $1' -
 amend = !git add . && git commit --amend --no-edit
