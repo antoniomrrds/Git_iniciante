@@ -169,6 +169,12 @@ git add .
 git commit -m "A mensagem"
 git push origin master
 
+windows:
+mkdir %USERPROFILE%\.ssh
+ssh-keygen -t rsa -b 4096 -C "emailgit@gmail.com" -f %USERPROFILE%\.ssh\nome_chave_rsa
+cat %USERPROFILE%/.ssh/nome_chave_rsa.pub
+
+linux:
 # CHAVES SSH
 ssh-keygen -t rsa -C "your email"
 cat ~/.ssh/id_rsa.pub
@@ -183,10 +189,6 @@ abri as config do projeto => git config --edit
 add o visual code para abrir no lugar do vim 
 (Do sistema global | Do Usuário)  core.editor code
 git config --global core.editor "code --wait --reuse-window"
-
-
-# conventional commits
-npm i git-commit-msg-linter -D        
 
 #personalizado config git --global --edit
 [core]
