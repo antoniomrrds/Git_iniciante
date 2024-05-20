@@ -16,6 +16,9 @@ git commit --amend
 git rebase -i HEAD~7 =  o i significa interrativo e HEAD~7 os ultimos 7 
 git rebase -i numero da hash do commit
 mude o pick para r do commit altere e salve no commit especifico
+O último commit diz feat: add sample map. Vamos supor que eu gostaria de traduzir esta mensagem de commit para português. Eu posso renomear aquele commit com o seguinte comando:
+
+$ git commit --amend -m 'feat: adiciona mapa de exemplo'
 
 
 
