@@ -45,28 +45,6 @@ cat ~/.ssh/nome_chave_rsa.pub
 
 ---
 
-## ⚙️ Configurações Avançadas
-
-```bash
-# Listar configurações
-git config --list
-
-# Editar configurações
-git config --global --edit     # do usuário
-git config --system --edit     # do sistema
-git config --edit              # do projeto
-
-# Apelidos (aliases)
-git config --global alias.s "status -s"
-git config --global alias.c "!git add --all && git commit -m"
-git config --global alias.l "!git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)[%cn], %C(green)%cr'"
-git config --global alias.ls "!git log --branches --not --remotes"
-git config --global alias.t "!sh -c 'git tag -a \$1 -m \$1' -"
-git config --global alias.amend "!git add . && git commit --amend --no-edit"
-```
-
----
-
 ## 🌿 Branches
 
 ```bash
