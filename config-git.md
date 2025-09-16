@@ -20,7 +20,7 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
 
 [alias]
 # 🚀 Aliases Git Completos: Básico, Intermediário e Avançado
-  #############################
+ #############################
   # 🔍 Status & Log
   #############################
   s = status -s                                 # 🔄 Status resumido (status short)
@@ -52,10 +52,15 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   # 🌳 Branches & Checkout
   #############################
   br = branch                                  # 🌿 Lista branches
+  br-remote = branch -r                        # 🌿 Lista branches remotas
+  br-all = branch -a                           # 🌿 Lista todas branches (local + remoto)
   co = checkout                                # 🔀 Checkout (trocar branch)
   sw = switch                                  # 🔄 Alternar branch (git switch)
+  swr = "!f() { git fetch origin && git switch --track origin/$1; }; f"  # 🔄 Alternar para branch remota criando local (fetch + switch)
   nb = "!sh -c 'git checkout -b \"$0\"'"      # 🚧 Criar nova branch e trocar para ela (checkout -b)
   nbs = "!sh -c 'git switch -c \"$0\"'"       # 🆕 Criar nova branch e trocar para ela (switch -c)
+  nbm = "!sh -c 'git checkout -b \"$0\" main'"      # 🆕 Criar nova branch baseada em main
+  nbd = "!sh -c 'git checkout -b \"$0\" develop'"   # 🆕 Criar nova branch baseada em develop
   bd = branch -d                               # ❌ Deletar branch local
   bdf = branch -D                              # ❌ Forçar deletar branch local
   bugfix = "!sh -c 'git checkout -b bugfix/$0'"  # 🐛 Criar branch bugfix e mudar para ela
@@ -69,7 +74,8 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #############################
   # 🧹 Limpeza & Reset
   #############################
-  cleanup = "!git branch --merged main | grep -v '\\*\\|main' | xargs -n 1 git branch -d"  # 🧽 Deletar branches locais já mescladas na main
+  cleanup = "!git branch --merged main | grep -v '\\*\\|main' | xargs -r git branch -d"  # 🧽 Deletar branches locais já mescladas na main
+  cleanup-remote = "!git fetch --prune && git remote prune origin"  # 🧹 Limpar branches locais que não existem mais no remoto
   purge = clean -fd                            # 🚮 Limpar arquivos não rastreados (clean force)
   rhard = reset --hard                         # 🔄 Reset hard (perigoso, apaga tudo local)
   rmt = "!sh -c 'git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'"  # 🧹 Reset para remoto (descarta tudo local)
@@ -108,39 +114,8 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   # ⚡ Extras Muito Úteis
   #############################
   subup = submodule update --remote --merge  # ⚡ Atualizar submódulos
+  subupdate = submodule update --init --recursive --remote  # ⚡ Atualizar e inicializar submodules
 
-
----
-
-## 💡 Como usar?
-
-Depois de configurar, você pode usar:
-
-git s # status resumido
-git sv # status verbose
-git c "msg" # add tudo + commit
-git amend # corrigir último commit
-git undo # desfazer último commit mantendo arquivos
-git p # push
-git pf # push force com segurança
-git pl # pull com rebase
-git br # listar branches
-git co main # trocar para branch main
-git sw dev # trocar para branch dev com switch
-git nb feat/x # criar nova branch com checkout
-git nbs feat/x # criar nova branch com switch
-git bd feature # deletar branch local
-git t v1.0.0 # criar tag anotada
-git cleanup # limpar branches mescladas
-git purge # limpar arquivos não rastreados
-git rhard # reset hard local
-git rmt # reset hard para remoto
-git d # diff colorido
-git who file.js # quem alterou cada linha
-git ri # rebase interativo
-git stash-save # salvar stash
-git stash-pop # aplicar stash
-git cfg # mostrar config
 
 
 ```
