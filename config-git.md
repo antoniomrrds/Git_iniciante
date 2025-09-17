@@ -104,7 +104,7 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   sw = switch
 
   # 🔄 Switch para branch remota criando local
-  swr = !f() { git fetch origin && git switch --track origin/$1; }; f
+  swr = "!f() { git fetch origin && git switch --track origin/$1; }; f" 
 
   # 🚧 Criar nova branch e trocar para ela
   nb = !sh -c 'git checkout -b \"$0\"'
