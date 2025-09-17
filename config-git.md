@@ -19,103 +19,235 @@ git config --global alias.t "!sh -c 'git tag -a \$1 -m \$1' -"
 git config --global alias.amend "!git add . && git commit --amend --no-edit"
 
 [alias]
-# 🚀 Aliases Git Completos: Básico, Intermediário e Avançado
- #############################
+[alias]
+
+  #############################
   # 🔍 Status & Log
   #############################
-  s = status -s                                 # 🔄 Status resumido (status short)
-  sv = status -v                                # 🧾 Status detalhado (status verbose)
-  st = status -sb                               # 🔎 Status curto com branch atual
-  l = "!git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)%an, %C(green)%cr' --graph"  # 📜 Log bonito customizado
-  ls = "!git log --branches --not --remotes"  # 🕵️‍♂️ Log só das branches locais (sem remotos)
-  hist = log --follow --                        # 📂 Histórico completo de um arquivo
-  search = "!sh -c 'git log --all --grep=\"$0\"'"  # 🔍 Buscar no histórico por mensagem ou autor
+
+  # 🔄 Status resumido (short)
+  s = status -s
+
+  # 🧾 Status detalhado (verbose)
+  sv = status -v
+
+  # 🔎 Status com branch atual
+  st = status -sb
+
+  # 📜 Log bonito customizado
+  l = !git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)%an, %C(green)%cr' --graph
+
+  # 🕵️‍♂️ Log de branches locais (não enviadas)
+  ls = !git log --branches --not --remotes
+
+  # 📂 Histórico completo de um arquivo
+  hist = log --follow --
+
+  # 🔍 Buscar por texto no histórico
+  search = !sh -c 'git log --all --grep=\"$0\"'
 
   #############################
   # 📦 Commit & Add
   #############################
-  c = "!git add --all && git commit -m"        # ✅ Add tudo e commit com mensagem
-  amend = "!git add . && git commit --amend --no-edit"  # ✏️ Amend último commit sem mudar mensagem
-  undo = reset HEAD~1 --mixed                   # 🗑️ Undo último commit (mantendo alterações)
-  unstage = reset HEAD --                       # 🔙 Resetar staging (unstage tudo)
-  ci-empty = commit --allow-empty -m            # 📝 Criar commit vazio (sem mudanças)
+
+  # ✅ Add tudo e commit com mensagem
+  c = !git add --all && git commit -m
+
+  # ✏️ Amend no último commit (sem mudar msg)
+  amend = !git add . && git commit --amend --no-edit
+
+  # 🗑️ Desfaz o último commit (mantém alterações)
+  undo = reset HEAD~1 --mixed
+
+  # 🔙 Remove arquivos do staging
+  unstage = reset HEAD --
+
+  # 📝 Criar commit vazio
+  ci-empty = commit --allow-empty -m
 
   #############################
   # 🚀 Push & Pull
   #############################
-  p = push                                     # ⬆️ Push normal
-  pf = push --force-with-lease                 # ⬆️ Push forçado (cuidado)
-  pl = pull --rebase                           # ⬇️ Pull com rebase
-  pull = pull                                  # 🔄 Pull normal
+
+  # ⬆️ Push normal
+  p = push
+
+  # ⚠️ Push forçado com segurança
+  pf = push --force-with-lease
+
+  # ⬇️ Pull com rebase
+  pl = pull --rebase
+
+  # 🔄 Pull normal
+  pull = pull
 
   #############################
   # 🌳 Branches & Checkout
   #############################
-  br = branch                                  # 🌿 Lista branches
-  br-remote = branch -r                        # 🌿 Lista branches remotas
-  br-all = branch -a                           # 🌿 Lista todas branches (local + remoto)
-  co = checkout                                # 🔀 Checkout (trocar branch)
-  sw = switch                                  # 🔄 Alternar branch (git switch)
-  swr = "!f() { git fetch origin && git switch --track origin/$1; }; f"  # 🔄 Alternar para branch remota criando local (fetch + switch)
-  nb = "!sh -c 'git checkout -b \"$0\"'"      # 🚧 Criar nova branch e trocar para ela (checkout -b)
-  nbs = "!sh -c 'git switch -c \"$0\"'"       # 🆕 Criar nova branch e trocar para ela (switch -c)
-  nbm = "!sh -c 'git checkout -b \"$0\" main'"      # 🆕 Criar nova branch baseada em main
-  nbd = "!sh -c 'git checkout -b \"$0\" develop'"   # 🆕 Criar nova branch baseada em develop
-  bd = branch -d                               # ❌ Deletar branch local
-  bdf = branch -D                              # ❌ Forçar deletar branch local
-  bugfix = "!sh -c 'git checkout -b bugfix/$0'"  # 🐛 Criar branch bugfix e mudar para ela
+
+  # 🌿 Listar branches locais
+  br = branch
+
+  # 🌿 Listar branches remotas
+  br-remote = branch -r
+
+  # 🌿 Listar branches remotas com último commit
+  br-remote-full = !git branch -r -v
+
+  # 🌿 Listar todas (local + remoto)
+  br-all = branch -a
+
+  # 🔀 Trocar de branch (checkout)
+  co = checkout
+
+  # 🔄 Trocar de branch (switch)
+  sw = switch
+
+  # 🔄 Switch para branch remota criando local
+  swr = !f() { git fetch origin && git switch --track origin/$1; }; f
+
+  # 🚧 Criar nova branch e trocar para ela
+  nb = !sh -c 'git checkout -b \"$0\"'
+
+  # 🆕 Criar nova branch com switch
+  nbs = !sh -c 'git switch -c \"$0\"'
+
+  # 🆕 Nova branch baseada na main
+  nbm = !sh -c 'git checkout -b \"$0\" main'
+
+  # 🆕 Nova branch baseada na develop
+  nbd = !sh -c 'git checkout -b \"$0\" develop'
+
+  # ❌ Deletar branch local
+  bd = branch -d
+
+  # ❌ Forçar deletar branch local
+  bdf = branch -D
+
+  # 🐛 Criar branch de bugfix
+  bugfix = !sh -c 'git checkout -b bugfix/$0'
 
   #############################
   # 🔖 Tags
   #############################
-  t = "!sh -c 'git tag -a \"$0\" -m \"$0\"'"  # 🏷️ Criar tag anotada com mensagem
-  tags = tag -l --sort=-creatordate           # 📄 Listar tags ordenadas por data
+
+  # 🏷️ Criar tag anotada
+  t = !sh -c 'git tag -a \"$0\" -m \"$0\"'
+
+  # 📄 Listar tags por data
+  tags = tag -l --sort=-creatordate
 
   #############################
   # 🧹 Limpeza & Reset
   #############################
-  cleanup = "!git branch --merged main | grep -v '\\*\\|main' | xargs -r git branch -d"  # 🧽 Deletar branches locais já mescladas na main
-  cleanup-remote = "!git fetch --prune && git remote prune origin"  # 🧹 Limpar branches locais que não existem mais no remoto
-  purge = clean -fd                            # 🚮 Limpar arquivos não rastreados (clean force)
-  rhard = reset --hard                         # 🔄 Reset hard (perigoso, apaga tudo local)
-  rmt = "!sh -c 'git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'"  # 🧹 Reset para remoto (descarta tudo local)
+
+  # 🧽 Deletar branches já mescladas na main
+  cleanup = !git branch --merged main | grep -v '\\*\\|main' | xargs -r git branch -d
+
+  # 🧹 Limpar referências remotas que não existem mais
+  cleanup-remote = !git fetch --prune && git remote prune origin
+
+  # 🚮 Limpar arquivos não rastreados
+  purge = clean -fd
+
+  # 🔄 Reset hard (cuidado!)
+  rhard = reset --hard
+
+  # 🧹 Reset branch local para remoto
+  rmt = !sh -c 'git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 
   #############################
-  # 🛠️ Diferenças, Blame & Outras Ferramentas
+  # 🛠️ Diff, Blame & Outras
   #############################
-  d = diff --color-words                       # 👀 Diff com destaque das palavras mudadas
-  ds = diff --stat                             # 👓 Diff simplificado (short)
-  who = blame                                 # 🧠 Quem modificou a linha? (blame)
+
+  # 👀 Diff destacando palavras
+  d = diff --color-words
+
+  # 👓 Diff simplificado
+  ds = diff --stat
+
+  # 🧠 Quem modificou a linha (blame)
+  who = blame
 
   #############################
   # 🎯 Rebase & Merge
   #############################
-  ri = rebase -i                              # 🔄 Rebase interativo
-  ri-abort = rebase --abort                   # ⚔️ Abort rebase
-  amend-merge = merge --abort                 # ⚔️ Abort merge
-  m = merge                                   # 🔀 Merge com mensagem padrão
+
+  # 🔄 Rebase interativo
+  ri = rebase -i
+
+  # ⚔️ Abortar rebase
+  ri-abort = rebase --abort
+
+  # ⚔️ Abortar merge
+  amend-merge = merge --abort
+
+  # 🔀 Merge com mensagem padrão
+  m = merge
 
   #############################
   # 🧮 Stash
   #############################
-  stash-save = stash save                     # 📥 Salvar stash
-  stash-pop = stash pop                       # 📤 Aplicar stash
-  stash-list = stash list                     # 📋 Listar stash
-  stash-clear = stash clear                   # 🧹 Limpar stash
+
+  # 📥 Salvar stash
+  stash-save = stash save
+
+  # 📤 Aplicar stash
+  stash-pop = stash pop
+
+  # 📋 Listar stashs
+  stash-list = stash list
+
+  # 🧹 Limpar todos os stashs
+  stash-clear = stash clear
 
   #############################
   # ⚙️ Config & Info
   #############################
-  cfg = config --list                         # 🌐 Mostrar config global
-  whoami = config user.name                   # 🧑 Mostrar usuário atual
-  last = log -1 HEAD                          # 🧾 Ver últimos commits
+
+  # 🌐 Ver configs globais
+  cfg = config --list
+
+  # 🧑 Ver usuário atual
+  whoami = config user.name
+
+  # 🧾 Último commit
+  last = log -1 HEAD
 
   #############################
-  # ⚡ Extras Muito Úteis
+  # ⚡ Extras Úteis
   #############################
-  subup = submodule update --remote --merge  # ⚡ Atualizar submódulos
-  subupdate = submodule update --init --recursive --remote  # ⚡ Atualizar e inicializar submodules
 
+  # ⚡ Atualizar submodules remotos
+  subup = submodule update --remote --merge
+
+  # ⚡ Inicializar e atualizar submodules
+  subupdate = submodule update --init --recursive --remote
+
+  #############################
+  # 📍 Novos Aliases Adicionados
+  #############################
+
+  # 📁 Ver arquivos não rastreados
+  untracked = !git status --short | grep '^??'
+
+  # ✏️ Ver arquivos modificados (não commitados)
+  modified = diff --name-only
+
+  # ⬆️ Commits locais ainda não enviados
+  unpushed = log @{u}..HEAD --oneline
+
+  # ⬇️ Commits do remoto que ainda não foram puxados
+  incoming = log HEAD..@{u} --oneline
+
+  # 🌍 Mostrar branches locais com rastreamento remoto
+  track = !git branch -vv
+
+  # ⚖️ Ver diferença entre local e remoto (em contagem)
+  sync-status = !git rev-list --left-right --count origin/$(git rev-parse --abbrev-ref HEAD)...HEAD
+
+  # 🧪 Ver diferenças entre HEAD local e remoto
+  diff-remote = !git fetch origin && git diff HEAD origin/$(git rev-parse --abbrev-ref HEAD)
 
 
 ```
