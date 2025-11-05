@@ -18,15 +18,20 @@ git config --global alias.ls "!git log --branches --not --remotes"
 git config --global alias.t "!sh -c 'git tag -a \$1 -m \$1' -"
 git config --global alias.amend "!git add . && git commit --amend --no-edit"
 
-[alias]
-[alias]
 
+[user]
+ name = アントニオ
+[core]
+ editor = code
+[push]
+ followTags = true
+[alias]
   #############################
   # 🔍 Status & Log
   #############################
 
   # 🔄 Status resumido (short)
-  s = status -s
+	s = status -s
 
   # 🧾 Status detalhado (verbose)
   sv = status -v
@@ -35,10 +40,10 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   st = status -sb
 
   # 📜 Log bonito customizado
-  l = !git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)%an, %C(green)%cr' --graph
+	l = !git log --pretty=format:'%C(auto)%h %C(red)%d  %C(white)| %s | - %C(cyan)[%cn], %C(green)%cr'
 
   # 🕵️‍♂️ Log de branches locais (não enviadas)
-  ls = !git log --branches --not --remotes
+	ls = !git log --branches --not --remotes
 
   # 📂 Histórico completo de um arquivo
   hist = log --follow --
@@ -51,10 +56,13 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #############################
 
   # ✅ Add tudo e commit com mensagem
-  c = !git add --all && git commit -m
+	c = !git add --all && git commit -m
 
+  # ✅ Commit apenas dos arquivos já selecionados
+  cm = !git commit -m
+  
   # ✏️ Amend no último commit (sem mudar msg)
-  amend = !git add . && git commit --amend --no-edit
+	amend = !git add . && git commit --amend --no-edit
 
   # 🗑️ Desfaz o último commit (mantém alterações)
   undo = reset HEAD~1 --mixed
@@ -132,7 +140,7 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #############################
 
   # 🏷️ Criar tag anotada
-  t = !sh -c 'git tag -a \"$0\" -m \"$0\"'
+  t = "!sh -c 'git tag -a \"$1\" -m \"$2\"' -"
 
   # 📄 Listar tags por data
   tags = tag -l --sort=-creatordate
