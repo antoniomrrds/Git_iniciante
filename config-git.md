@@ -92,6 +92,11 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #############################
   # 🌳 Branches & Checkout
   #############################
+  # 🔀 Merge da branch atual na 'dev'
+  m2dev = "!f() { b=$(git rev-parse --abbrev-ref HEAD); git switch dev && git merge \"$b\"; }; f"
+
+  # 🔀 Merge da 'dev' na 'main'
+  dev2main = "!f() { git switch main && git merge dev; }; f"
 
   # 🌿 Listar branches locais
   br = branch
