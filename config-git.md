@@ -155,10 +155,10 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #############################
 
   # 🧽 Deletar branches já mescladas na main
-  cleanup = !git branch --merged main | grep -v '\\*\\|main' | xargs -r git branch -d
-
+  cleanup = "!git branch --merged main | grep -v '\\*\\|main\\|dev' | xargs -r git branch -d"
+  
   # 🧹 Limpar referências remotas que não existem mais
-  cleanup-remote = !git fetch --prune && git remote prune origin
+  cleanup-remote = !git fetch --prune && git remote prune o
 
   # 🚮 Limpar arquivos não rastreados
   purge = clean -fd
