@@ -1,49 +1,53 @@
 # CARREGAR Terminal Icons
-Import-Module Terminal-Icons
+Import-Module Terminal-Icons -ErrorAction SilentlyContinue
 
-# DEFINIR O CAMINHO CORRETO DOS TEMAS (ENCONTRADO AGORA)
-$env:POSH_THEMES_PATH = "C:\Users\anton\.poshthemes"
+# DEFINIR O CAMINHO DOS TEMAS
+$env:POSH_THEMES_PATH = "$HOME\.poshthemes"
 
-# Verificar se o diretório existe
+# Criar diretório se não existir
 if (-not (Test-Path $env:POSH_THEMES_PATH)) {
-    # Fallback para criar o diretório se não existir
     New-Item -ItemType Directory -Path $env:POSH_THEMES_PATH -Force | Out-Null
 }
 
-# Mostrar onde os temas estão
-Write-Host "📁 Temas em: $env:POSH_THEMES_PATH" -ForegroundColor Cyan
-
-# Listar temas disponíveis
+# BAIXAR TEMAS SE NÃO EXISTIREM
 $temasDisponiveis = @()
 if (Test-Path $env:POSH_THEMES_PATH) {
     $temasDisponiveis = Get-ChildItem $env:POSH_THEMES_PATH -Filter *.omp.json | Select-Object -ExpandProperty Name
 }
 
-# ESCOLHA SEU TEMA AQUI (altere conforme preferir)
-$temaEscolhido = "pixelrobots.omp.json"  # <- Mude para o tema que quiser
+if ($temasDisponiveis.Count -eq 0) {
+    Write-Host "📥 Baixando temas do Oh My Posh..." -ForegroundColor Yellow
+    $temaUrl = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/pixelrobots.omp.json"
+    $caminhoTema = Join-Path $env:POSH_THEMES_PATH "pixelrobots.omp.json"
+    try {
+        Invoke-WebRequest -Uri $temaUrl -OutFile $caminhoTema -ErrorAction Stop
+        $temasDisponiveis = @("pixelrobots.omp.json")
+        Write-Host "✅ Tema baixado com sucesso!" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "❌ Erro ao baixar tema. Usando tema padrão." -ForegroundColor Red
+    }
+}
 
-# Verificar se o tema escolhido existe
+# CARREGAR TEMA
+$temaEscolhido = "pixelrobots.omp.json"
+
 if ($temasDisponiveis -contains $temaEscolhido) {
     $caminhoTema = Join-Path $env:POSH_THEMES_PATH $temaEscolhido
     Write-Host "✅ Carregando tema: $temaEscolhido" -ForegroundColor Green
     oh-my-posh init pwsh --config $caminhoTema | Invoke-Expression
 }
+elseif ($temasDisponiveis.Count -gt 0) {
+    # Fallback para o primeiro tema disponível
+    $temaFallback = $temasDisponiveis[0]
+    $caminhoFallback = Join-Path $env:POSH_THEMES_PATH $temaFallback
+    Write-Host "🔄 Carregando tema alternativo: $temaFallback" -ForegroundColor Yellow
+    oh-my-posh init pwsh --config $caminhoFallback | Invoke-Expression
+}
 else {
-    Write-Host "⚠️ Tema '$temaEscolhido' não encontrado!" -ForegroundColor Yellow
-    
-    if ($temasDisponiveis.Count -gt 0) {
-        Write-Host "📋 Temas disponíveis:" -ForegroundColor Cyan
-        $temasDisponiveis | ForEach-Object { Write-Host "   - $_" -ForegroundColor White }
-        
-        # Carregar o primeiro tema disponível
-        $temaFallback = $temasDisponiveis[0]
-        Write-Host "🔄 Carregando tema alternativo: $temaFallback" -ForegroundColor Yellow
-        $caminhoFallback = Join-Path $env:POSH_THEMES_PATH $temaFallback
-        oh-my-posh init pwsh --config $caminhoFallback | Invoke-Expression
-    }
-    else {
-        Write-Host "❌ Nenhum tema encontrado!" -ForegroundColor Red
-    }
+    # Fallback para o tema padrão do sistema
+    Write-Host "🔄 Usando tema padrão do Oh My Posh" -ForegroundColor Yellow
+    oh-my-posh init pwsh | Invoke-Expression
 }
 
 # CONFIGURAR PSReadLine
