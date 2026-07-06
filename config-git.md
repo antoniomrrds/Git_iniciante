@@ -18,7 +18,6 @@ git config --global alias.ls "!git log --branches --not --remotes"
 git config --global alias.t "!sh -c 'git tag -a \$1 -m \$1' -"
 git config --global alias.amend "!git add . && git commit --amend --no-edit"
 
-
 # ========================================
 #  CONFIGURAÇÕES GERAIS DO GIT
 # ========================================
@@ -36,6 +35,7 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
 [core]
   # Editor padrão para mensagens de commit (VS Code)
   editor = code
+	autocrlf = false
 
 [push]
   # Seguir tags automaticamente ao fazer push
@@ -128,13 +128,18 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #  - Comandos para gerenciar branches
   #############################
 
-  # Merge da branch atual na branch 'dev'
+  # Criar a branch 'develop' a partir da 'main' (uso único, na configuração inicial do repositório)
+  # Cria localmente, faz push e já configura o tracking remoto
+  # Uso: git init-develop
+  init-develop = "!f() { git switch main && git switch -c develop && git push -u origin develop; }; f"
+
+  # Merge da branch atual na branch 'develop'
   # Útil para integrar uma feature na develop
-  m2dev = "!f() { b=$(git rev-parse --abbrev-ref HEAD); git switch dev && git merge \"$b\"; }; f"
+  m2dev = "!f() { b=$(git rev-parse --abbrev-ref HEAD); git switch develop && git merge \"$b\"; }; f"
   
-  # Merge da branch 'dev' na 'main'
+  # Merge da branch 'develop' na 'main'
   # Útil para fazer release, integrando develop na main
-  dev2main = "!f() { git switch main && git merge dev; }; f"
+  dev2main = "!f() { git switch main && git merge develop; }; f"
   
   # Lista branches locais (branch atual destacada)
   br = branch
@@ -205,8 +210,8 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #  - Comandos para limpar e resetar o repositório
   #############################
 
-  # Deletar branches locais já mescladas na main (mantém apenas main e dev)
-  cleanup = "!git branch --merged main | grep -v '\\*\\|main\\|dev' | xargs -r git branch -d"
+  # Deletar branches locais já mescladas na main (mantém apenas main e develop)
+  cleanup = "!git branch --merged main | grep -v '\\*\\|main\\|develop' | xargs -r git branch -d"
   
   # Limpar referências remotas que não existem mais (prune)
   cleanup-remote = !git fetch --prune && git remote prune o
@@ -344,7 +349,6 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   # Útil para a primeira vez que envia uma branch nova
   # Exemplo: git push-here-setup
   push-here-setup = !git push -u origin HEAD
-
 ```
 
 ---
