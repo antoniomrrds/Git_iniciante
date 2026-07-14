@@ -210,15 +210,23 @@ git config --global alias.amend "!git add . && git commit --amend --no-edit"
   #  - Comandos para limpar e resetar o repositório
   #############################
 
-  # Deletar branches locais já mescladas na main (mantém apenas main e develop)
-  cleanup = "!git branch --merged main | grep -v '\\*\\|main\\|develop' | xargs -r git branch -d"
-  
   # Limpar referências remotas que não existem mais (prune)
   cleanup-remote = !git fetch --prune && git remote prune o
   
   # Remover arquivos não rastreados (limpeza agressiva)
   # CUIDADO: arquivos deletados não podem ser recuperados!
   purge = clean -fd
+
+# Deletar branches locais já mescladas na develop (mantém apenas main e develop)
+  cleanup = "!git branch --merged develop | grep -v '\\*\\|main\\|develop' | xargs -r git branch -d"
+
+  # Deletar TODAS as branches locais, exceto main e develop
+  # Usa -d (seguro): recusa deletar branch com commits não mesclados na develop
+  cleanup-all = "!git branch | grep -v '\\*\\|main\\|develop' | xargs -r git branch -d"
+
+  # Deletar branch remota
+  # Uso: git bdr <branch>
+  bdr = push o --delete
   
   # Reset hard (volta o repositório para um estado anterior)
   # CUIDADO: perde todas as alterações não commitadas!
